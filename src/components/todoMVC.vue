@@ -21,7 +21,7 @@
                 <!-- 双向绑定 item.completed  确定选中状态  选中为 true 未选中为 false-->
                 <input class="toggle" type="checkbox" v-model="item.completed">
                 <!-- 添加双击事件  传值 item-->
-                <label @dblclick="getEditing(item)">{{item.title}}</label>
+                <label @dblclick="getEditing(item)">{{ item.title }}</label>
                 <button class="destroy" @click="handelDel(index)"></button>
               </div>
               <input class="edit" v-model="item.title" @keydown.enter="cancelEdit" @blur="cancelEdit"
@@ -32,7 +32,7 @@
         <!-- This footer should hidden by default and shown when there are todos -->
         <footer class="footer">
           <!-- This should be `0 items left` by default -->
-          <span class="todo-count"><strong>{{unCompleted}}</strong> 件事</span>
+          <span class="todo-count"><strong>{{ unCompleted }}</strong> 件事</span>
           <!-- Remove this if you don't implement routing -->
           <ul class="filters">
             <li>
@@ -46,7 +46,7 @@
             </li>
           </ul>
           <!-- Hidden if no completed items are left ↓ -->
-          <button class="clear-completed" v-show="hadCompleted" @click="handeldelAll">清空已完成</button>
+          <button class="clear-completed" v-show="hadCompleted" @click="handelDelAll">清空已完成</button>
         </footer>
       </template>
     </section>
@@ -173,7 +173,7 @@
         this.currentEditing = null
       },
       // 删除所有已完成的任务
-      handeldelAll() {
+      handelDelAll() {
         // 将未完成的任务过滤出来 赋值给todos
         this.todos = this.todos.filter(t => t.completed === false)
       }
@@ -186,8 +186,20 @@
       // window.onhashchange()
     },
     created() {
+      //加载时 默认跳转到根目录
+      // this.$router.push({
+      //   path: '/'
+      // })
+      // // 获取hash值
+      // window.addEventListener('hashchange', () => {
+      //   this.filterText = window.location.hash.substr(2);
+      // })
     },
     mounted() {
+
+      this.$router.push({
+        path: '/'
+      })
       // 获取hash值
       window.addEventListener('hashchange', () => {
         this.filterText = window.location.hash.substr(2);
