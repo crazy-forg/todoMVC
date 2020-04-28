@@ -1,6 +1,7 @@
 # todomvc
 
 > A Vue.js project
+> vue练习
 
 ## Build Setup
 
